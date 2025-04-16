@@ -1,0 +1,41 @@
+# Arquivos do Django
+*.pyc
+*$py.class
+__pycache__/
+*.sqlite3
+*.sql
+*.pot
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+.env
+.env.prod
+.env.dev
+
+# Arquivos de IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Diretórios de build/distribuição
+/dist/
+/build/
+*.egg-info/
+/staticfiles/
+/static/
+
+# Node.js e Tailwind CLI
+node_modules/
+.cache/
+/dist/
+/tailwindcss/
+/tailwind.config.js
+package-lock.json
+yarn.lock
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
