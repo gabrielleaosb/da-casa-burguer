@@ -1,0 +1,24 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Da Casa Burguer | Cardápio Virtual</title>
+    <link href="{% static 'menu/css/output.css' %}" rel="stylesheet" />
+    <link rel="icon" href="{% static 'menu/icons/favicon.ico' %}" />
+    <style>
+      body {
+        background-image: url("{% static 'menu/bg/pattern_fundo_.png' %}");
+        background-color: #fff0b7;
+      }
+    </style>
+  </head>
+  <body class="flex flex-col items-center">
+    <! -- Header -->
+    <section class="w-full flex">
+        <img src="{% static 'menu/icons/logo_.png' %}" alt="Logo Da Casa Burguer" class="h-76 w-76 object-contain" />
+    </section>
+  </body>
+</html>
