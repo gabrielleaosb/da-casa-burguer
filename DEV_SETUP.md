@@ -7,3 +7,7 @@ ou
 
 ### Terminal 2 ###
 `python manage.py runserver`
+
+### Para Testes ###
+
+`uvicorn cardapio.asgi:application --reload --host 0.0.0.0 --port 8000`

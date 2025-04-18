@@ -8,17 +8,450 @@
     <title>Da Casa Burguer | Cardápio Virtual</title>
     <link href="{% static 'menu/css/output.css' %}" rel="stylesheet" />
     <link rel="icon" href="{% static 'menu/icons/favicon.ico' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
     <style>
+      @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700|Quicksand:300,400,500,700|Shadows+Into+Light+Two');
+
+      .font-poppins {
+        font-family: 'Poppins', sans-serif;
+      }
+      
+      .font-quicksand {
+        font-family: 'Quicksand', sans-serif;
+        color: #232d37;
+      }
+      
+      .font-shadows {
+        font-family: 'Shadows Into Light Two', cursive;
+      }
+
+      p {
+        color: #51545f;
+        font-size: 16px;
+      }
+
       body {
+        font-family: 'Poppins', sans-serif;
         background-image: url("{% static 'menu/bg/pattern_fundo_.png' %}");
         background-color: #fff0b7;
+        margin: 0;
+        padding: 0;
+      }
+
+      .carousel-wrapper {
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .carousel-container {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+      }
+      
+      .carousel-slide {
+        flex: 0 0 100%;
+        scroll-snap-align: start;
+        min-width: 0;
+      }
+      
+      .carousel-slide > div {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .carousel-slide img {
+        width: 100%;
+        height: auto; 
+        object-fit: cover;
+        object-position: center; 
+        transition: transform 0.3s ease;
+      }
+      
+      .hide-scroll {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      
+      .hide-scroll::-webkit-scrollbar {
+        display: none;
+      }
+
+      @media (max-width: 700px) {
+        .carousel-slide {
+          flex: 0 0 100%; 
+        }
+      
+        .carousel-slide img {
+          max-height: 700px; 
+          height: auto; 
+        }
+      }
+      
+      @media (min-width: 701px) and (max-width: 1024px) {
+        .carousel-slide {
+          flex: 0 0 50%; 
+        }
+      
+        .carousel-slide img {
+          max-height: 500px; 
+          height: auto; 
+        }
+      }
+
+      @media (min-width: 1025px) {
+        .carousel-slide {
+          flex: 0 0 25%;
+        }
+      
+        .carousel-container {
+          width: 100%; 
+        }
+      
+        .carousel-slide img {
+          max-height: none; 
+          height: auto; 
+        }
+      }
+      
+      @media (min-width: 1280px) {
+        .carousel-slide {
+          flex: 0 0 25%; 
+        }
+      
+        .carousel-slide img {
+          max-height: none; 
+          height: auto; 
+        }
+      }
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .observe {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      .fade-in-up {
+        animation: fadeInUp 1s ease-out forwards;
+      }
+      .carousel-container2 {
+        display: flex;
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+        gap: 0;
+        padding: 0;
+        margin: 0;
+      }
+      
+      .carousel-slide2 {
+        flex-shrink: 0;
+        width: 100%; 
+        scroll-snap-align: start;
+        height: auto;
+      }
+      
+      .carousel-img2 {
+        transition: all 0.3s ease;
+        border-radius: 0;
+        height: auto;
+        width: auto;
+      }
+      
+      @media (max-width: 575px) {
+        .carousel-slide2 {
+          width: 50%; 
+        }
+      
+        .carousel-img2 {
+          width: 263px; 
+          height: 263px;
+        }
+      }
+      
+      @media (min-width: 576px) and (max-width: 765px) {
+        .carousel-slide2 {
+          width: 33.33%;
+        }
+      
+        .carousel-img2 {
+          width: 193px; 
+          height: 193px;
+        }
+      }
+      
+      @media (min-width: 766px) and (max-width: 999px) {
+        .carousel-slide2 {
+          width: 25%; 
+        }
+      
+        .carousel-img2 {
+          width: 255px; 
+          height: 255px;
+        }
+      }
+      
+      @media (min-width: 1000px) {
+        .carousel-slide2 {
+          width: 20%; 
+        }
+      
+        .carousel-img2 {
+          width: 215px; 
+          height: 215px;
+        }
       }
     </style>
   </head>
-  <body class="flex flex-col items-center">
-    <! -- Header -->
-    <section class="w-full flex">
-        <img src="{% static 'menu/icons/logo_.png' %}" alt="Logo Da Casa Burguer" class="h-76 w-76 object-contain" />
+  <body class="min-h-screen flex flex-col items-center justify-start w-full mb-[-80px]">
+    <img src="{% static 'menu/icons/logo_.png' %}" alt="Logo Da Casa Burguer" class="h-[3] w-76 object-contain mt-0"/>
+    <a
+      href="https://www.ifood.com.br"
+      class="absolute top-54 left-50% transform -translate-x-1/2 w-12 h-12 rounded-full flex items-center justify-center bg-transparent"
+      target="_blank"
+    ></a>
+    <img src="{% static 'menu/icons/@@horario_.png' %}" alt="Horario" class="h-16 w-74 object-contain"/>
+    <!-- Header -->
+    <section class="w-full flex flex-col items-center justify-center mt-[-2px] p-0">
+      
+      <!-- Carrossel com loop Django -->
+      <div class="w-full max-w-6xl mx-auto px-0">
+        <div class="carousel-wrapper">
+          <div class="carousel-container hide-scroll"
+               id="carousel"
+               x-data="carouselLoop()"
+               x-init="init()"
+               >
+            {% for item in carousel_items %}
+            <div class="carousel-slide">
+              <div class="relative group w-full h-full">
+                {% if item.imagem %}
+                <img
+                  src="{{ item.imagem.url }}"
+                  alt="{{ item.nome }}"
+                  class="min-w-[444px] min-h-[555px] w-[444px] h-[555px] object-cover shadow-md transition-transform duration-300 group-hover:scale-105"
+                />
+                {% else %}
+                <div class="w-full h-48 bg-gray-200 rounded-lg flex items-center justify-center">
+                  <span class="text-gray-500">Sem imagem</span>
+                </div>
+                {% endif %}
+                <div class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg">
+                  <div class="text-white text-center">
+                    <h3 class="font-bold text-lg mb-2">{{ item.nome }}</h3>
+                    <p class="text-sm">{{ item.descricao }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
     </section>
+    <!-- Seção Comidas -->
+    <section class="w-full flex flex-col items-center justify-center py-8" style="background-image: url('{% static 'menu/bg/pattern_fundo_videos.png' %}');">
+      <img src="{% static 'menu/icons/@@cardapio_burgers_.png' %}" alt="Horário" class="h-22 object-contain mb-[-8px]"/>
+    
+      <div class="grid grid-cols-2 gap-6 items-center mb-10">
+        {% for comida in comidas_hamburguer %}
+          <div class="flex flex-col text-center justify-between w-[270px] h-[364px] py-2
+                      md:w-[280px] md:h-[420px] lg:w-[320px] lg:h-[440px] transition-all duration-300 mb-10 observe">
+            {% if comida.imagem %}
+              <img src="{{ comida.imagem.url }}" alt="Imagem comida" class="w-[240px] h-[160px] md:w-[240px] md:h-[160px] lg:w-[260px] lg:h-[180px] 
+            mx-auto rounded-[26px] object-cover transition-transform duration-300">
+            {% else %}
+              <div class="w-[192px] h-[128px] bg-gray-200 rounded-[26px] flex items-center justify-center">
+                <span class="text-gray-500">Sem imagem</span>
+              </div>
+            {% endif %}
+            <div class="flex flex-col flex-grow justify-between">
+              <div class="mt-6">
+                <h2 class="text-[16px] font-medium ">{{ comida.tipo }}</h2>
+                <h1 class="text-[24px] font-quicksand font-extrabold mt-1 leading-tight">{{ comida.nome }}</h1>
+                <h2 class="text-[#ff0000] font-bold text-[24px] mt-1">R$ {{ comida.preco }}</h2>
+                <p class="text-[14px] font-light mt-2 line-clamp-4 text-center w-full max-w-[220px] mx-auto md:max-w-[240px] lg:max-w-[260px]">{{ comida.descricao }}</p>
+              </div>   
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <img src="{% static 'menu/icons/@@cardapio_sobremesa.png' %}" alt="Milkshakes" class="h-22 object-contain mb-[-8px]"/>
+    
+      <div class="grid grid-cols-2 gap-6 items-center">
+        {% for comida in comidas_milkshakes %}
+          <div class="flex flex-col text-center justify-between w-[270px] h-[364px] p-2
+                      md:w-[280px] md:h-[420px] lg:w-[320px] lg:h-[440px] transition-all duration-300 mb-10 observe">
+            {% if comida.imagem %}
+              <img src="{{ comida.imagem.url }}" alt="Imagem comida" class="w-[240px] h-[160px] md:w-[240px] md:h-[160px] lg:w-[260px] lg:h-[180px] 
+            mx-auto rounded-[26px] object-cover transition-transform duration-300">
+            {% else %}
+              <div class="w-[192px] h-[128px] bg-gray-200 rounded-[26px] flex items-center justify-center">
+                <span class="text-gray-500">Sem imagem</span>
+              </div>
+            {% endif %}
+            <div class="flex flex-col flex-grow justify-between">
+              <div class="mt-6">
+                <h2 class="text-[16px] font-medium ">{{ comida.tipo }}</h2>
+                <h1 class="text-[24px] font-quicksand font-extrabold mt-1 leading-tight">{{ comida.nome }}</h1>
+                <h2 class="text-[#ff0000] font-bold text-[24px] mt-1">R$ {{ comida.preco }}</h2>
+                <p class="text-[14px] font-light mt-2 line-clamp-4 text-center w-full max-w-[220px] mx-auto md:max-w-[240px] lg:max-w-[260px]">{{ comida.descricao }}</p>
+              </div>   
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <img src="{% static 'menu/icons/@@cardapio_bebidas_.png' %}" alt="Bebidas" class="h-22 object-contain mb-[-8px] mt-10"/>
+    
+      <div class="grid grid-cols-2 gap-6 items-center mb-10">
+        {% for comida in comidas_bebidas %}
+          <div class="flex flex-col text-center justify-between w-[270px] h-[364px] p-2
+                      md:w-[280px] md:h-[420px] lg:w-[320px] lg:h-[440px] transition-all duration-300 mb-8 observe">
+            {% if comida.imagem %}
+              <img src="{{ comida.imagem.url }}" alt="Imagem comida" class="w-[240px] h-[160px] md:w-[240px] md:h-[160px] lg:w-[260px] lg:h-[180px] 
+            mx-auto rounded-[26px] object-cover transition-transform duration-300">
+            {% else %}
+              <div class="w-[192px] h-[128px] bg-gray-200 rounded-[26px] flex items-center justify-center">
+                <span class="text-gray-500">Sem imagem</span>
+              </div>
+            {% endif %}
+            <div class="flex flex-col flex-grow justify-between w-full">
+              <div class="mt-6 w-full">
+                <h2 class="text-[16px] font-medium ">{{ comida.tipo }}</h2>
+                <h1 class="text-[24px] font-quicksand font-extrabold mt-1 leading-tight">{{ comida.nome }}</h1>
+                <h2 class="text-[#ff0000] font-bold text-[24px] mt-1">R$ {{ comida.preco }}</h2>
+                <p class="text-[14px] font-light mt-2 line-clamp-4 text-center w-full max-w-[220px] mx-auto md:max-w-[240px] lg:max-w-[260px]">{{ comida.descricao }}</p>
+              </div>   
+            </div>
+          </div>
+        {% endfor %}
+    </section>
+    <!-- Seção Videos -->
+    <section class="w-full flex flex-col items-center justify-center gap-4 py-8" style="background-image: url('{% static 'menu/bg/pattern_fundo__.png' %}');">
+      <img src="{% static 'menu/icons/@@videos_.png' %}" alt="Videos" class="h-24 object-contain mb-[-8px] mt-[-26px]" />
+    
+      <!-- Imagem grande com botão -->
+      <div class="flex flex-col w-full items-center justify-center relative observe">
+        <img src="{% static 'menu/videos/01.jpg' %}" class="w-auto h-auto max-w-[510px] max-h-[368px] rounded-[22px]" />
+        <a href="https://surprise.ly/v/?ydhu66Scqd8:0:0:0:100"
+           target="_blank"
+           class="absolute w-[200px] h-[50px] bg-white  text-[20px] text-black font-quicksand font-extrabold flex items-center justify-center rounded-full transition duration-300 hover:bg-orange-500 hover:text-white"
+           style="top: 50%; left: 50%; transform: translate(-50%, -50%);">
+          ASSISTIR >
+        </a>
+      </div>
+    
+      <div class="flex flex-row observe gap-8 mt-4">
+        <div class="relative">
+          <img src="{% static 'menu/videos/02.jpg' %}" class="w-auto max-w-[240px] h-auto max-h-[174px] rounded-[22px]" />
+          <a href="https://surprise.ly/v/?PfvUawfWxz4:0:0:0:100"
+             target="_blank"
+             class="absolute w-[200px] h-[50px] bg-white text-[20px] text-black font-quicksand font-extrabold flex items-center justify-center rounded-full transition duration-300 "
+             style="top: 50%; left: 50%; transform: translate(-50%, -50%);">
+            ASSISTIR >
+          </a>
+        </div>
+        <div class="relative">
+          <img src="{% static 'menu/videos/03.jpg' %}" class="w-auto max-w-[240px] h-auto max-h-[174px] rounded-[22px]" />
+          <a href="https://surprise.ly/v/?ciAaOxSibc0:0:0:0:100"
+             target="_blank"
+             class="absolute w-[200px] h-[50px] bg-white text-black text-[20px] font-quicksand font-extrabold flex items-center justify-center rounded-full transition duration-300 hover:bg-orange-500 hover:text-white"
+             style="top: 50%; left: 50%; transform: translate(-50%, -50%);">
+            ASSISTIR >
+          </a>
+        </div>
+      </div>
+    </section>
+    <!-- Seção Footer -->
+    <section class="w-full flex flex-col items-center justify-center gap-2 py-8 px-0" style="background-image: url('{% static 'menu/bg/pattern_fundo_.png' %}');">
+      <img src="{% static 'menu/icons/@@endereco_.png' %}" alt="Videos" class="h-16 object-contain mb-[-8px]" />
+      <div class="flex flex-col w-full items-center justify-center mb-8">
+        <h1 class="font-quicksand font-bold text-[24px] text-center">DA CASA BURGUER | GOURMET</h1>
+        <span class="font-extrabold text-[18px] text-black text-center">MACEIÓ SHOPPING</span>
+        <span class="font-normal text-[18px] text-center">Av. Com. Gustavo Paiva . 2990</span>
+        <span class="font-normal text-[18px] text-center">Mangabeiras . Maceió/AL</span>
+        <span class="font-extrabold text-[18px] text-black text-center">DELIVERY: (82) 99931-5213</span>
+      </div>
+      <div class="w-full">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3933.3776083466196!2d-35.7177724852086!3d-9.648740193092493!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x70145d396b547a5%3A0x795c9053875c0a96!2sMacei%C3%B3%20Shopping!5e0!3m2!1spt-BR!2sbr!4v1665575533072!5m2!1spt-BR!2sbrhttps://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15733.510442401135!2d-35.715584!3d-9.64874!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x70145d396b547a5%3A0x795c9053875
+                c0a96!2sMacei%C3%B3%20Shopping!5e0!3m2!1spt-BR!2sbr!4v1744931590078!5m2!1spt-BR!2sbr" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"
+                 referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+      <div class="flex flex-col py-2">
+        <img src="{% static 'menu/icons/@@redes_sociais_.png' %}" alt="Videos" class="h-22 object-contain" />
+        <div class="flex flex-row gap-2 justify-around">
+          <a href="https://www.facebook.com/cardapiovirtual.brasil/" class="flex flex-col w-[40px] h-[60px] items-center justify-center">
+            <img src="{% static 'menu/icons/01_facebook.png' %}" alt="Facebook" class="w-[50px] h-[50px] object-contain">
+            <span class="font-black text-[10px] text-center">FACEBOOK</span>
+          </a>
+          <a href="https://www.instagram.com/cardapiovirtual.brasil/" class="flex flex-col w-[40px] h-[60px] items-center justify-center">
+            <img src="{% static 'menu/icons/02_instagram.png' %}" alt="Instagram" class="w-[50px] h-[50px] object-contain">
+            <span class="font-black text-[10px] text-center">INSTAGRAM</span>
+          </a>
+          <a href="https://www.google.com/maps/place/Card%C3%A1pio+Virtual+Brasil/@-9.6499132,-35.7089498,17z/data=!3m1!4b1!4m5!3m4!1s0x7014509c130a7f9:0xe1e5793b121d852c!8m2!3d28.6478898!4d180" class="flex flex-col w-[40px] h-[60px] items-center justify-center">
+            <img src="{% static 'menu/icons/03_google.png' %}" alt="Google" class="w-[50px] h-[50px] object-contain">
+            <span class="font-black text-[10px] text-center">GOOGLE</span>
+          </a>
+          <a href="https://www.youtube.com/channel/UChAcqm49zyk9PDIvrrsqSFQ" class="flex flex-col w-[40px] h-[60px] items-center justify-center">
+            <img src="{% static 'menu/icons/04_youtube.png' %}" alt="Youtube" class="w-[50px] h-[50px] object-contain">
+            <span class="font-black text-[10px] text-center">YOUTUBE</span>
+          </a>
+        </div>
+      </div>
+      <!-- Carrossel Touch após ícones YouTube -->
+      <section class="w-full py-8 px-0 mb-[-20px] mt-[-20px]">
+        <div class="carousel-wrapper">
+          <div class="carousel-container2 hide-scroll">
+            {% for imagem in imagens_touch %}
+            <div class="carousel-slide2">
+              <div class="w-full h-full">
+                <img
+                  src="{% static imagem.url %}"
+                  alt="{{ imagem.nome }}"
+                  class="carousel-img object-cover shadow-lg h-auto w-auto"
+                />
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+    </section>
+    <footer class="flex flex-col w-full items-center justify-center mt-[-40px] mb-6">
+      <img src="{% static 'menu/icons/logo_card_virtual.png' %}" alt="Logo Cardápio Virtual" class="w-[210px] h-[74px] object-cover mb-[-10px]">
+      <a href="#top" class="w-[30px] h-[30px] rounded-full bg-[#fc6c3f] flex items-center justify-center mb-4">
+        <i class="fa fa-arrow-up text-white"></i>
+      </a>
+      <span class="font-bold text-[14px] text-[#333333]">Copyright @2023 | By: <a href="https://www.wbvirtual.com.br/links/" class="text-[#990000] font-medium">W.Bagetti Design</a></span>
+    </footer>
+    <a href="https://wa.me/5582999315213" target="_blank" class="fixed bottom-10 right-4 w-[50px] h-[50px] bg-[#25d366] shadow-lg rounded-full flex items-center justify-center z-50 transition duration-300">
+      <i class="fab fa-whatsapp text-white text-[28px]"></i>
+    </a>
+    <a href="tel:+5582988228180" class="fixed bottom-28 right-4 w-[50px] h-[50px] bg-[#003399] shadow-lg rounded-full flex items-center justify-center z-50 transition duration-300">
+      <i class="fas fa-phone-square text-white text-[28px] transform scale-x-[-1]"></i>
+    </a>
+    
+    <script src="{% static 'menu/js/animations.js' %}"></script>
+    <script src="{% static 'menu/js/carousel.js' %}"></script>
+    <script src="{% static 'menu/js/carousel2.js' %}"></script>
   </body>
 </html>
