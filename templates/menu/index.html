@@ -219,6 +219,7 @@
           height: 215px;
         }
       }
+
     </style>
   </head>
   <body class="min-h-screen flex flex-col items-center justify-start w-full mb-[-80px]">
@@ -247,7 +248,7 @@
                 <img
                   src="{{ item.imagem.url }}"
                   alt="{{ item.nome }}"
-                  class="min-w-[444px] min-h-[555px] w-[444px] h-[555px] object-cover shadow-md transition-transform duration-300 group-hover:scale-105"
+                  class="min-w-[auto] min-h-[385px] w-auto h-auto object-cover shadow-md transition-transform duration-300 group-hover:scale-105"
                 />
                 {% else %}
                 <div class="w-full h-48 bg-gray-200 rounded-lg flex items-center justify-center">
@@ -269,14 +270,14 @@
     </section>
     <!-- Seção Comidas -->
     <section class="w-full flex flex-col items-center justify-center py-8" style="background-image: url('{% static 'menu/bg/pattern_fundo_videos.png' %}');">
-      <img src="{% static 'menu/icons/@@cardapio_burgers_.png' %}" alt="Horário" class="h-22 object-contain mb-[-8px]"/>
+      <img src="{% static 'menu/icons/@@cardapio_burgers_.png' %}" alt="Horário" class="h-[74px] w-[300px] object-contain mb-[-8px]"/>
     
       <div class="grid grid-cols-2 gap-6 items-center mb-10">
         {% for comida in comidas_hamburguer %}
-          <div class="flex flex-col text-center justify-between w-[270px] h-[364px] py-2
-                      md:w-[280px] md:h-[420px] lg:w-[320px] lg:h-[440px] transition-all duration-300 mb-10 observe">
+          <div class="flex flex-col text-center justify-between w-[164px] h-[364px] py-2 mx-[20px]
+                      max-w-[50%] transition-all duration-300 mb-10 observe">
             {% if comida.imagem %}
-              <img src="{{ comida.imagem.url }}" alt="Imagem comida" class="w-[240px] h-[160px] md:w-[240px] md:h-[160px] lg:w-[260px] lg:h-[180px] 
+              <img src="{{ comida.imagem.url }}" alt="Imagem comida" class="w-[121px] h-[107px] 
             mx-auto rounded-[26px] object-cover transition-transform duration-300">
             {% else %}
               <div class="w-[192px] h-[128px] bg-gray-200 rounded-[26px] flex items-center justify-center">
@@ -287,7 +288,7 @@
               <div class="mt-6">
                 <h2 class="text-[16px] font-medium ">{{ comida.tipo }}</h2>
                 <h1 class="text-[24px] font-quicksand font-extrabold mt-1 leading-tight">{{ comida.nome }}</h1>
-                <h2 class="text-[#ff0000] font-bold text-[24px] mt-1">R$ {{ comida.preco }}</h2>
+                <h2 class="text-[#ff0000] font-bold text-[24px] mt-1">{{ comida.preco }}</h2>
                 <p class="text-[14px] font-light mt-2 line-clamp-4 text-center w-full max-w-[220px] mx-auto md:max-w-[240px] lg:max-w-[260px]">{{ comida.descricao }}</p>
               </div>   
             </div>
