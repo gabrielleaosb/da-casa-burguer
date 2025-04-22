@@ -14,7 +14,7 @@ SECRET_KEY = 'django-insecure-*$$h60x7lp00k=x_y+%a9*b=(@p8i4*xlx8sg610u%lh#lt!7r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*', '.ngrok.io']
 
 
 # Application definition
@@ -112,6 +112,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Diretório onde os arquiv
 # Arquivos de Mídia
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",  # ou o diretório que contém seus arquivos estáticos
+]
 
 # Definir o campo de ID padrão como BigAutoField
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

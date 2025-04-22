@@ -351,8 +351,8 @@
     <section id="secao-bebidas" class="w-full flex flex-col items-center justify-center py-8" style="background-image: url('{% static 'menu/bg/pattern_fundo_videos.png' %}');">
       <img src="{% static 'menu/icons/@@cardapio_bebidas_.png' %}" alt="Bebidas" class="h-22 object-contain mb-4"/>  
       <div class="grid grid-cols-2 gap-4 px-4 w-full max-w-6xl mx-auto">
-        {% for comida in comidas_bebidas %}
-          <div class="flex flex-col text-center justify-between w-full h-auto py-3 px-2 transition-all duration-300 mb-6 observe rounded-2xl">
+        {% for comida in comidas_milkshakes %}
+          <div class="flex flex-col text-center justify-between w-full h-auto py-3 px-2 transition-all duration-300 mb-6 observe rounded-2xl ">
             {% if comida.imagem %}
               <img src="{{ comida.imagem.url }}" alt="Imagem comida" class="w-[160px] h-[120px] md:w-[180px] md:h-[140px] mx-auto rounded-[26px] object-cover transition-transform duration-300 hover:scale-105">
             {% else %}
@@ -360,11 +360,11 @@
                 <span class="text-gray-500 text-xs">Sem imagem</span>
               </div>
             {% endif %}
-            <div class="flex flex-col flex-grow justify-between mt-6 mx-12">
-              <h2 class="text-[14px] font-medium font-quicksand">{{ comida.tipo|upper }}</h2>
+            <div class="flex flex-col flex-grow justify-between mt-3">
+              <h2 class="text-[16px] font-medium">{{ comida.tipo }}</h2>
               <h1 class="text-[24px] font-quicksand font-extrabold mt-1 leading-tight">{{ comida.nome }}</h1>
               <h2 class="text-[#ff0000] font-bold text-[24px] mt-1">{{ comida.preco }}</h2>
-              <p class="text-[12px] mt-2 text-center w-[60%] px-[20px] mx-[10px]">{{ comida.descricao }}</p>
+              <p class="text-[14px] font-light mt-2 line-clamp-3 text-center w-full px-2">{{ comida.descricao }}</p>
             </div>   
           </div>
         {% endfor %}
@@ -425,19 +425,19 @@
       <div class="flex flex-col py-2">
         <img src="{% static 'menu/icons/@@redes_sociais_.png' %}" alt="Videos" class="h-22 object-contain" />
         <div class="flex flex-row gap-2 justify-around">
-          <a href="https://www.facebook.com/cardapiovirtual.brasil/" class="flex flex-col w-[40px] h-[60px] items-center justify-center">
+          <a href="https://www.facebook.com/cardapiovirtual.brasil/" class="flex flex-col w-[40px] h-[60px] items-center justify-center" target="_blank">
             <img src="{% static 'menu/icons/01_facebook.png' %}" alt="Facebook" class="w-[50px] h-[50px] object-contain">
             <span class="font-black text-[10px] text-center">FACEBOOK</span>
           </a>
-          <a href="https://www.instagram.com/cardapiovirtual.brasil/" class="flex flex-col w-[40px] h-[60px] items-center justify-center">
+          <a href="https://www.instagram.com/cardapiovirtual.brasil/" class="flex flex-col w-[40px] h-[60px] items-center justify-center" target="_blank">
             <img src="{% static 'menu/icons/02_instagram.png' %}" alt="Instagram" class="w-[50px] h-[50px] object-contain">
             <span class="font-black text-[10px] text-center">INSTAGRAM</span>
           </a>
-          <a href="https://www.google.com/maps/place/Card%C3%A1pio+Virtual+Brasil/@-9.6499132,-35.7089498,17z/data=!3m1!4b1!4m5!3m4!1s0x7014509c130a7f9:0xe1e5793b121d852c!8m2!3d28.6478898!4d180" class="flex flex-col w-[40px] h-[60px] items-center justify-center">
+          <a href="https://www.google.com/maps/place/Card%C3%A1pio+Virtual+Brasil/@-9.6499132,-35.7089498,17z/data=!3m1!4b1!4m5!3m4!1s0x7014509c130a7f9:0xe1e5793b121d852c!8m2!3d28.6478898!4d180" class="flex flex-col w-[40px] h-[60px] items-center justify-center" target="_blank">
             <img src="{% static 'menu/icons/03_google.png' %}" alt="Google" class="w-[50px] h-[50px] object-contain">
             <span class="font-black text-[10px] text-center">GOOGLE</span>
           </a>
-          <a href="https://www.youtube.com/channel/UChAcqm49zyk9PDIvrrsqSFQ" class="flex flex-col w-[40px] h-[60px] items-center justify-center">
+          <a href="https://www.youtube.com/channel/UChAcqm49zyk9PDIvrrsqSFQ" class="flex flex-col w-[40px] h-[60px] items-center justify-center" target="_blank">
             <img src="{% static 'menu/icons/04_youtube.png' %}" alt="Youtube" class="w-[50px] h-[50px] object-contain">
             <span class="font-black text-[10px] text-center">YOUTUBE</span>
           </a>
@@ -479,7 +479,5 @@
     </div>
     
     <script src="{% static 'menu/js/animations.js' %}"></script>
-    <script src="{% static 'menu/js/carousel.js' %}"></script>
-    <script src="{% static 'menu/js/carousel2.js' %}"></script>
   </body>
 </html>
