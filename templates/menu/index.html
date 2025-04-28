@@ -351,7 +351,7 @@
     <section id="secao-bebidas" class="w-full flex flex-col items-center justify-center py-8" style="background-image: url('{% static 'menu/bg/pattern_fundo_videos.png' %}');">
       <img src="{% static 'menu/icons/@@cardapio_bebidas_.png' %}" alt="Bebidas" class="h-22 object-contain mb-4"/>  
       <div class="grid grid-cols-2 gap-4 px-4 w-full max-w-6xl mx-auto">
-        {% for comida in comidas_milkshakes %}
+        {% for comida in comidas_bebidas %}
           <div class="flex flex-col text-center justify-between w-full h-auto py-3 px-2 transition-all duration-300 mb-6 observe rounded-2xl ">
             {% if comida.imagem %}
               <img src="{{ comida.imagem.url }}" alt="Imagem comida" class="w-[160px] h-[120px] md:w-[180px] md:h-[140px] mx-auto rounded-[26px] object-cover transition-transform duration-300 hover:scale-105">
@@ -375,7 +375,7 @@
       <img src="{% static 'menu/icons/@@videos_.png' %}" alt="Videos" class="h-24 object-contain mb-[-8px] mt-[-26px]" />
     
       <!-- Imagem grande com botão -->
-      <div class="flex flex-col w-full items-center justify-center relative observe">
+      <div class="flex flex-col items-center justify-center relative observe mx-10">
         <img src="{% static 'menu/videos/01.jpg' %}" class="w-auto h-auto max-w-[510px] max-h-[368px] rounded-[22px]" />
         <a href="https://surprise.ly/v/?ydhu66Scqd8:0:0:0:100"
            target="_blank"
@@ -385,7 +385,7 @@
         </a>
       </div>
     
-      <div class="flex flex-row observe gap-8 mt-4">
+      <div class="flex flex-row observe gap-8 mt-4 mx-10">
         <div class="relative">
           <img src="{% static 'menu/videos/02.jpg' %}" class="w-auto max-w-[240px] h-auto max-h-[174px] rounded-[22px]" />
           <a href="https://surprise.ly/v/?PfvUawfWxz4:0:0:0:100"
