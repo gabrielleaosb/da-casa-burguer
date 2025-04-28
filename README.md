@@ -26,4 +26,4 @@ Se você tiver alguma dúvida ou sugestão, entre em contato através do e-mail:
 
 - **E-mail**: [gabriellsbagetti@gmail.com](mailto:gabriellsbagetti@gmail.com)
 
-Obrigado por usar o nosso **Cardápio Virtual**! Esperamos que ele possa ajudar a melhorar a experiência dos seus clientes. 😄
+😄
