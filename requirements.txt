@@ -37,3 +37,4 @@ toml==0.10.2
 tzdata==2025.2
 urllib3==2.4.0
 uvicorn==0.34.1
+whitenoise==6.9.0
